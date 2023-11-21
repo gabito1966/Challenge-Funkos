@@ -106,20 +106,20 @@ p {
 img{
    width: 100%; 
 }
-/* CLASES DE AYUDA*/
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .delete_trash{
-    max-width: 28px ;
+    max-width: 2.8rem;
 }
 .edit_pencil{
-    max-width: 28px
+    max-width: 2.8rem;
 }
 .search_icon{
-    max-width: 30px;
+    max-width: 3.0rem;
 }
 
 /* HEADER */
@@ -133,8 +133,8 @@ header{
     display:flex;
     justify-content:space-between;
     align-items: center;
-    
 }
+
 .navbar__logo{
     max-width: 300px;
 }
@@ -155,14 +155,15 @@ header{
 
 .navbar__link:hover {
     background-color: var(--primary-900);
-
 }
 
 .with-icon{
     display: flex;
     align-items: center;
     gap: var(--spacing-8);
+
 }
+
 .with-submenu:hover .submenu {
     display: block;
 }
