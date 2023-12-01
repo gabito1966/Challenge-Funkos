@@ -16,42 +16,29 @@
                 </a>
             </picture>
             <ul class="navbar__menu">
-                <li class="navbar__item with-submenu">
-                    <a class="navbar__link with-icon" href="./shop.html">SHOP<iconify-icon
-                            icon="majesticons:chevron-down"></iconify-icon></a>
-                    <ul class="submenu">
-                        <li class="submenu__item">
-                            <a href="" class="submenu__link">Funkos</a>
-                        </li>
-                        <li class="submenu__item">
-                            <a href="" class="submenu__link">Remeras</a>
-                        </li>
-                        <li class="submenu__item">
-                            <a href="" class="submenu__link">LLaveros</a>
-                        </li>
-                    </ul>
+                <li class="navbar__item">
+                    <a class="navbar__link" href="../shop/shop.html">VER TIENDA</a>
                 </li>
                 <li class="navbar__item">
-                    <a class="navbar__link" href="./contact.html">CONTACTO</a>
+                    <a class="navbar__link" href="./admin.html">ADMIN</a>
                 </li>
                 <li class="navbar__item">
-                    <a class="navbar__link" href="../admin/login.html">LOGIN</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__cart" href="./cart.html">
-                        <img src="../../img/icons/cart-icon.svg" alt="Carrito de compras">
-                    </a>
+                    <a class="navbar__link" href="../../index.html">SALIR</a>
                 </li>
             </ul>
         </nav>
     </header>
     <!--Fin Header-->
 
-    /*Admin*/
-    <main>
-        <section>
+    <!--Admin-->
+    <main class="container admin">
+        <section class="admin__search">
+            <img class="search_icon" src="../../img/icons/search_icon.svg" alt="">
+            <input class="admin__search__input" type="search" name="" id="" placeholder="código, nombre o categoria">
+        </section>
+        <section >
             <div class="admin__container">
-                <h1 class="admin__list__title">LISTADO DE PRODUCTOS</h1>
+                <h2 class="admin__list__title">LISTADO DE PRODUCTOS</h2>
                 <div class="admin__add">
                     <p class="admin__add__text">AGREGAR</p>
                     <button class="admin__add__button">+</button>
@@ -179,16 +166,16 @@
         <nav class="navbar container">
             <ul class="navbar__items">
                 <li class="navbar__item">
-                    <a class="navbar__link" href=".shop.html">SHOP</a>
+                    <a class="navbar__link" href="../shop/shop.html">SHOP</a>
                 </li>
                 <li class="navbar__item">
-                    <a class="navbar__link" href="../admin/register.html">REGISTRARME</a>
+                    <a class="navbar__link" href="./register.html">REGISTRARME</a>
                 </li>
                 <li class="navbar__item">
-                    <a class="navbar__link" href="../admin/login.html">LOGIN</a>
+                    <a class="navbar__link" href="./login.html">LOGIN</a>
                 </li>
                 <li class="navbar__item">
-                    <a class="navbar__link" href="./contact.html">CONTACTO</a>
+                    <a class="navbar__link" href="../shop/contact.html">CONTACTO</a>
                 </li>
             </ul>
             <picture class="navbar__logo">
