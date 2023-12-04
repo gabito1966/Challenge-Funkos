@@ -1,0 +1,66 @@
+.login__container {
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    height: 50vh; 
+  }
+.login__form{
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    gap: var(--spacing-20);  
+}
+.login__title{
+    font-family: var(--alternative-font);
+    font-size: var(--font-display);
+    font-weight: 700;
+    text-align: right;
+    margin: var(--spacing-12) auto;
+}
+.login__message{
+    font-family: var(--alternative-font);
+    font-size: var(--font-xlarge);
+    font-weight: 500;
+    text-align: right;
+}
+.login__container__input{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: flex-start ;
+    margin: var(--spacing-12) auto;
+}
+
+.login__sub-title{
+    font-size: var(--font-large);
+    text-align: right;
+}
+
+.login__input{
+    padding: var(--spacing-8);
+    border: none;
+    border-bottom: solid 2px var(--primary-900);
+}
+
+.login__container_options{
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-28);
+}
+.login__ingresar{
+    font-size: var(--font-xsmall);
+    color: var(--light-font-solid);
+    background-color: var(--primary-solid);
+    padding: var(--spacing-10);
+}
+.login__recordar{
+    font-size: var(--font-medium);
+    color: var(--dark-solid);
+}
+
+.login__recuperar-contraseña{
+    font-size: var(--font-small);
+    color: var(--secondary-solid);
+    text-align: center;
+    margin: var(--spacing-10)auto;
+}

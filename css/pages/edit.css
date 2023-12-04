@@ -1,0 +1,82 @@
+.edit__form{
+    display: flex;
+    flex-direction: column;
+    margin: var(--spacing-36) var(--spacing-20);
+    gap: var(--spacing-28);
+}
+
+.edit__form__title{
+    font-size: var(--font-display);
+    font-weight: 700;
+    padding: var(--spacing-36) 0;
+}
+
+.edit__form__container{
+    display: flex;
+    gap: var(--spacing-16);
+    align-items: center;
+}
+
+.edit__form__title{
+    font-family: var(--alternative-font);
+    font-size: var(--font-display);
+    font-weight: 700;
+    color: var(--dark-solid);
+}
+.edit__form__sub-title{
+    font-size: var(--font-large);
+    text-align: right;
+}
+.edit__form__input{
+    border: none;
+    border-bottom: solid var(--primary-900) 2px;
+    padding: var(--spacing-8);
+}
+.edit__form__textarea{    
+    min-height: 15vmax;
+    min-width: 70%;
+}
+.edit__form__button-container{
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr 2fr;
+}
+.edit__form__button{
+    font-size: var(--font-xsmall);
+    font-weight: 600;
+    color: var(--light-font-solid);
+    background-color: var(--primary-solid);
+    border: none;
+    padding: var(--spacing-10) ;
+    margin: var(--spacing-10);
+    cursor: pointer;
+}
+
+.edit__form__select{
+    padding: var(--spacing-8);
+    border-radius: var(--spacing-6);
+    border: solid var(--dark-bg-solid) 2px;
+    min-width: 23%;
+}
+
+.edit__form__select-img::-webkit-file-upload-button {
+    padding: var(--spacing-8);
+    border-radius: var(--spacing-6);
+    border: solid var(--dark-bg-solid) 2px;
+}
+
+.edit__form__container-img{
+    display: inline-block;
+    text-align: center;
+    gap:  var(--spacing-36);
+}
+
+.edit__form__img{
+    max-width: 150px;
+    border-bottom: solid var(--primary-900) 2px;
+}
+.edit__form__text{
+    font-family: var(--alternative-font);
+    font-size: var(--font-medium);
+    font-weight: 500;
+}
+
