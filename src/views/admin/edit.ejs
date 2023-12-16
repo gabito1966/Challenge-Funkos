@@ -1,0 +1,83 @@
+<%- include('../partials/head') %>
+
+<body>
+
+<%- include('../partials/headerAdmin') %>
+
+    <main id="edit" class="container edit">
+        <h2 class="edit__title">EDITAR ITEM</h2>
+        <form class="edit__form" action="/admin/edit" method="post" enctype="application/x-www-form-urlencoded">
+            <div class="form__flex">
+                <div class="form__box--flex">
+                <label class="form__label" for="collection" >Categoria:</label>
+                <select class="form__select" name="collection" id="collection" require>
+                    <option value="Figuras coleccionables">Figuras coleccionables</option>
+                    <option value="Llaveros">Llaveros</option>
+                    <option value="Remeras">Remeras</option>
+                </select>
+                </div>
+                <div class="form__box--flex">
+                <label class="form__label" for="collection">Licencia:</label>
+                <select class="form__select" name="collection" id="collection">
+                    <option value="" disabled selected hidden>Seleccionar</option>
+                    <option value="Harry Potter">Harry Potter</option>
+                    <option value="Pokemon">Pokemon</option>
+                    <option value="Star Wars">Star Wars</option>
+                    <option value="Deportes">Deportes</option>
+                </select>
+                </div>
+            </div>
+            <div class="form__box--flex">
+                <label class="form__label" for="">Nombre del producto:</label>
+                <input class="form__input" type="text" name="" id="" placeholder="nombre del producto">
+            </div>
+            <div>
+                <textarea class="form__textarea" placeholder="Descripción del producto"></textarea>
+            </div>
+            <div class="form__container">
+                <label class="form__title" for="">SKU:</label>
+                <input class="form__input" type="text" name="" id="" placeholder="codigo SKU">
+                <label class="form__title" for="">Precio:</label>
+                <input class="form__input" type="text" name="" id="" placeholder="Precio del Porducto">
+                <label class="form__title" for="">Stock:</label>
+                <input class="form__input" type="number" min="1">
+            </div>
+            <div class="form__container">
+                <label class="form__title" for="">Descuento:</label>
+                <input class="form__input" type="number" min="0" max="100" placeholder="0%">
+                <label class="form__title" for="">Cuotas:</label>
+                <select class="form__select" name="cuotas" id="cuotas">
+                    <option value="" disabled selected hidden>Seleccionar</option>
+                    <option value="1 cuota">1 cuota</option>
+                    <option value="3 cuotas">3 cuotas sin interes</option>
+                    <option value="6 cuotas">6 cuotas sin interes</option>
+                    <option value="12 cuotas">12 cuotas sin interes</option>
+                </select>
+            </div>
+            <div class="form__container">
+                <label class="form__title" for="">Imágenes:</label>
+                <input class="form__select-img" name="Elegir archivos" type="file">
+            </div>
+            <div class="form__container-img">
+                <div>
+                    <img class="form__img" src="/img/pokemon/pikachu-1.webp" alt="">
+                    <p class="form__text">Frente</p>
+                </div>
+                <div>
+                    <img class="form__img" src="/img/pokemon/pikachu-box.webp" alt="">
+                    <p class="form__text">Dorso</p>
+                </div>
+            </div>
+            <div class="form__button-container">
+                <button class="form__button" type="submit"> Modificar Producto </button>
+                <button class="form__button" type="submit"> Limpiar </button>
+            </div>
+        </form>
+    </main>
+    
+    
+    <!--Inicio Footer-->
+<%- include('../partials/footer') %>
+    
+</body>
+</html>

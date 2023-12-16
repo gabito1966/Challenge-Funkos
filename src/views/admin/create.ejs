@@ -1,47 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create | Funkoshop</title>
-    <link rel="stylesheet" href="../../css/index.css">
-</head>
+<%- include('../partials/head') %>
+
 <body>
-    <!--Inicio Header-->
-    <header>
-        <nav class="navbar container">
-            <picture class="navbar__logo">
-                <a href="../../index.html">
-                    <img src="../../img/branding/logo_light_horizontal.svg" alt="Isologotipo de la marca Funkoshop">
-                </a>
-            </picture>
-            <ul class="navbar__menu">
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../shop/shop.html">VER TIENDA</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="./admin.html">ADMIN</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../../index.html">SALIR</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <!--Fin Header-->
+    <%- include('../partials/headerAdmin') %>
 
     <main class="container">
-        <form class="create__form" action="">
+        <form class="create__form" action="" method="get">
             <h2 class="create__form__title">CREAR NUEVO ITEM</h2>
             <div class="create__form__container">
                 <label class="create__form__sub-title" for="">Categoria:</label>
                 <select class="create__form__select" name="" id="">
                     <option value="Figuras">Figuras</option>
+                    <option value="Llaveros">Llaveros</option>
+                    <option value="Remeras">Remeras</option>
                 </select>
                 <label class="create__form__sub-title" for="">Licencia:</label>
                     
                 <select class="create__form__select" name="" id="">
-                    <option value="Naruto Shippunden">Naruto Shippuden</option>
+                    <option value="Harry Potter">Harry Potter</option>
+                    <option value="Pokemon">Pokemon</option>
+                    <option value="Star Wars">Star Wars</option>
+                    <option value="Deportes">Deportes</option>
                 </select>
             </div>
             <div class="create__form__container">
@@ -64,6 +42,7 @@
                 <input class="create__form__input" type="number" min="0" max="100" placeholder="0%">
                 <label class="create__form__sub-title" for="">Cuotas:</label>
                 <select class="create__form__select" name="" id="" aria-placeholder="Cuotas">
+                    <option value="1 cuota">1 Cuota</option>
                     <option value="3 cuotas">3 Cuotas sin interés</option>
                     <option value="6 cuotas">6 Cuotas sin interés</option>
                     <option value="12 cuotas">12 Cuotas sin interés</option>
@@ -81,27 +60,6 @@
     </main>
     
     <!--Inicio Footer-->
-    <footer class="footer">
-        <nav class="navbar container">
-            <ul class="navbar__items">
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../shop/shop.html">SHOP</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="./register.html">REGISTRARME</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="./login.html">LOGIN</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../shop/contact.html">CONTACTO</a>
-                </li>
-            </ul>
-            <picture class="navbar__logo">
-                <img src="../../img/branding/isotype.svg" alt="Isotipo de la marca funkoshop">
-            </picture>
-        </nav>
-        <p class="footer__copy">All rights reserved 2023 - Funkoshop &copy;</p>
-    </footer> 
+    <%- include('../partials/footer') %>
 </body>
 </html>

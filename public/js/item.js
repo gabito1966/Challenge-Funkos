@@ -9,4 +9,4 @@ subtract.addEventListener('click', () => {
     }else {
     
     quantity.value = Number(quantity.value) - 1 }
-}); 
+});

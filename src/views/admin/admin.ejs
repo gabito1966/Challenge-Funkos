@@ -1,50 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin | Funkoshop</title>
-    <link rel="stylesheet" href="../../css/index.css">
-</head>
+<%- include('../partials/head') %>
+
 <body>
-    <!--Inicio Header-->
-    <header>
-        <nav class="navbar container">
-            <picture class="navbar__logo">
-                <a href="../../index.html">
-                    <img src="../../img/branding/logo_light_horizontal.svg" alt="Isologotipo de la marca Funkoshop">
-                </a>
-            </picture>
-            <ul class="navbar__menu">
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../shop/shop.html">VER TIENDA</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="./admin.html">ADMIN</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../../index.html">SALIR</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <!--Fin Header-->
+    <%- include('../partials/headerAdmin') %>
+    
 
     <!--Admin-->
-    <main class="container admin">
+    <main class="container">
         <section class="admin__search">
-            <img class="search_icon" src="../../img/icons/search_icon.svg" alt="">
+            <img class="search_icon" src="/img/icons/search_icon.svg" alt="">
             <input class="admin__search__input" type="search" name="" id="" placeholder="código, nombre o categoria">
         </section>
-        <section >
+        <section>
             <div class="admin__container">
-                <h2 class="admin__list__title">LISTADO DE PRODUCTOS</h2>
+                <h1 class="admin__list__title">LISTADO DE PRODUCTOS</h1>
                 <div class="admin__add">
                     <p class="admin__add__text">AGREGAR</p>
                     <button class="admin__add__button">+</button>
                 </div>
+    
             </div>
+    
             <div class="admin__list__container">
+    
                 <div class="admin__list__detail admin__list__detail-title ">
                     <p>ID</p>
                     <p>Código</p>
@@ -58,8 +35,8 @@
                     <p>STW001001</p>
                     <p>Baby Yoda Blueball </p>
                     <p>STAR WARS</p>
-                    <img class="edit_pencil" src="../../img/icons/edit_pencil.svg" alt="">
-                    <img class="delete_trash" src="../../img/icons/delete_trash.svg" alt="">
+                    <img class="edit_pencil" src="/img/icons/edit_pencil.svg" alt="">
+                    <img class="delete_trash" src="/img/icons/delete_trash.svg" alt="">
                 </div>
                 <div class="admin__list__detail admin__list__detail-item">
                     <p>2</p>
@@ -157,33 +134,16 @@
                     <img class="edit_pencil" src="../../img/icons/edit_pencil.svg" alt="">
                     <img class="delete_trash" src="../../img/icons/delete_trash.svg" alt="">
                 </div>
+    
+    
             </div>
         </section>
+    
+    
     </main>
 
     <!--Inicio Footer-->
-    <footer class="footer">
-        <nav class="navbar container">
-            <ul class="navbar__items">
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../shop/shop.html">SHOP</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="./register.html">REGISTRARME</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="./login.html">LOGIN</a>
-                </li>
-                <li class="navbar__item">
-                    <a class="navbar__link" href="../shop/contact.html">CONTACTO</a>
-                </li>
-            </ul>
-            <picture class="navbar__logo">
-                <img src="../../img/branding/isotype.svg" alt="Isotipo de la marca funkoshop">
-            </picture>
-        </nav>
-        <p class="footer__copy">All rights reserved 2023 - Funkoshop &copy;</p>
-    </footer>
+    <%- include('../partials/footer') %>
     
 </body>
 </html>

@@ -53,6 +53,11 @@
     background-color: var(--primary-900);
     padding: var(--spacing-8);
     cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+.item__article__add-cart:hover {
+    background-color: var(--secondary-solid);
 }
 
 .item__article__promo{

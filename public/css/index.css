@@ -35,7 +35,7 @@
 /*HERO*/
 
 .hero{
-    background-image: url(../img/funkos-banner.webp);
+    background-image: url(/img/funkos-banner.webp);
     padding: var(--spacing-128);
     background-position: top;
     background-size: cover;
@@ -140,7 +140,28 @@
     background-color: var(--primary-900);
 }
 
+/*FAQS & ABOUT*/
 
+.pages__container {
+    min-height: 60vh;
+    padding: var(--spacing-24) 0;
+}
 
+.pages__title {
+    font-family: var(--alternative-font);
+    font-size: var(--font-jumbo);
+    font-weight: 700;
+    padding: var(--spacing-20) 0;
+}
 
-
+.pages__text {
+    font-family: var(--alternative-font);
+    font-size: var(--font-large);
+    font-weight: 500;
+    padding: var(--spacing-16) 0;
+}
+.pages__container p {
+    font-size: var(--font-medium);
+    font-weight: 400;
+    padding: var(--spacing-10) 0;
+}

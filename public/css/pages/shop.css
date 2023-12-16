@@ -1,76 +1,71 @@
-
-.shop-container {
-    display: flex;
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    padding: var(--spacings-20) var(--spacings-36);
 }
 
-.shop-aside{
+
+.shop__aside{
     margin: var(--spacing-68) auto;
     display: flex;
     flex-direction: column;
 }
 
-.shop-aside__text{
+.shop__title{
     font-size: var(--font-large);
     padding: var(--spacing-12) 0;
 }
 
-.shop-aside__minmax {
-    font-size: var(--font-small);
-}
-
-.shop-aside__search{
+.shop__input{
     border-radius: var(--spacing-6);
     padding: var(--spacing-8);
     min-width: 100%;
 }
-
-.shop-aside__order{
+.shop__order{
     padding: var(--spacing-8);
     border-radius: var(--spacing-6);
     border: solid var(--dark-bg-solid) 2px;
     min-width: 100%;
 }
+.shop__text {
+    font-size: var(--font-small);
+}
 
-.shop-aside__price-content{
+.shop__price-content{
     display: flex;
     gap: var(--spacing-8);
     align-items: center;
 } 
 
-.shop-aside__box{
+.shop__box{
     width: var(--spacing-68);
     height: var(--spacing-24);
     border: 2px solid var(--dark-bg-solid);
     border-radius: var(--spacing-6);
 }
 
-.shop-aside__items{
+.shop__items{
     display: flex;
     padding: var(--spacing-12) auto;
 }
 
-.shop-aside__checkbox{
+.shop__checkbox{
     display: flex;
     margin-left: var(--spacing-12);
     gap: var(--spacing-8);
 }
 
-.shop-aside__checkbox-text{
+.shop__checkbox-text{
     font-size: var(--font-small);
     padding: 0 var(--spacing-8);
-}
-
-.shop{
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-36);
-    margin: var(--spacing-68) auto;
 }
 
 .shop__items{
     display: flex;
     gap: var(--spacing-24);
 }
+
+
 
 .pagination{
     display: flex;
@@ -79,20 +74,15 @@
     
 }
 
-.pagination ul{
+.pagination{
     display: flex;
     width: 100%;
     justify-content: center;
-}
-
-.pagination ul li{
-    display: flex;
     margin-right: var(--spacing-12);
-    align-items: center; 
-    
 }
 
-.pagination ul li a {
+
+.pagination__link {
     display:inline-flex;
     padding: var(--spacing-12);
     width: var(--spacing-36);
@@ -106,18 +96,15 @@
     border-radius: var(--spacing-6);
 }
 
-.pagination ul li a:hover{
+.pagination__link--selected{
     color: var(--primary-solid);
     border: 1px solid var(--primary-900);
 }
 
-.chevron-left {
-    background-color: var(--dark-300);
+.pagination__link--chevron {
+    background-color: var(--dark-bg-500);
     color: var(--light-font-solid);
 }
 
-.chevron-left a {
-    color: var(--light-font-solid);
-}
 
 

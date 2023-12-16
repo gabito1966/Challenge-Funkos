@@ -34,10 +34,18 @@
     border-bottom: solid 2px var(--primary-900);
 }
 .contact__submit{
+    width: var(--spacing-128);
     font-size: var(--font-xsmall);
     color: var(--light-font-solid);
     background-color: var(--primary-solid);
     padding: var(--spacing-10);
+    transition: all .3s ease-in-out;
+    cursor:pointer;
+}
+
+.contact__submit:hover{
+    background-color: var(--secondary-solid);
+
 }
 .contact__textarea{    
     min-height: 15vmax;

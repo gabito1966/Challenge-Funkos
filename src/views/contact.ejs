@@ -1,0 +1,35 @@
+<%- include('./partials/head') %>
+
+<body>
+    <%- include('./partials/header') %>
+    <main class="container contact">
+        <form class="contact__container" action="">
+            <h2 class="contact__title">CONTACTO</h2>
+            <h3 class="contact__message">Completa el formulario para ser contactado</h3>
+            <div>
+                <div class="contact__data">
+                    <label class="contact__sub-title" for="text">Nombre:</label>
+                    <input class="contact__input" type="text" name="" id="" placeholder="Ingrese su Nombre">
+                    <label class="contact__sub-title" for="text">Apellido:</label>
+                    <input class="contact__input" type="text" name="" id="" placeholder="Ingrese su Apellido">
+                </div>
+                <div class="contact__data">
+                    <label class="contact__sub-title" for="email">Email:</label>
+                    <input class="contact__input" type="email" name="" id="" placeholder="sumail@mail.com">
+                    <label class="contact__sub-title" for="tel">Telefono:</label>
+                    <input class="contact__input" type="tel" name="" id="" placeholder="Ingrese su Telefono">
+                </div>
+                <div>
+                    <textarea class="contact__textarea" placeholder="Escriba su consulta"></textarea>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="contact__submit" href="">Enviar</button>
+            </div>
+        </form>
+    </main>
+    
+    <!--Inicio Footer-->
+    <%- include('./partials/footer') %>
+</body>
+</html>
