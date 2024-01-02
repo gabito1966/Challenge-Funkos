@@ -1,62 +1,75 @@
-.admin {
-    padding: var(--spacing-36) 0;
-}
 
 .admin__search{
     display: flex;
     gap: var(--spacing-20);
     margin: var(--spacing-36) auto;
 }
-.admin__search__input{
+.admin__search-bar{
     border: solid 2px var(--dark-bg-solid);
     border-radius: var(--spacing-6);
     min-width: 50%;
     padding: var(--spacing-10);
 }
-.admin__container{
+
+.admin__icon iconify-icon {
+    width: 42px;
+    height: 42px;
+}
+
+.admin__header{
   display: grid;
   grid-template-columns: 4fr 1fr;
+  gap: var(--spacing-16);
 }
-.admin__add{
+.admin__header h2 {
+    font-family: var(--alternative-font);
+    font-size: var(--font-jumbo);
+    font-weight: 700;
+}
+
+.admin__header span{
+    font-size: var(--font-large);
+    align-items: center;
+    text-align: center;
     display: flex;
     align-items: center;
     justify-content: end;
     gap: var(--spacing-20);
 }
-.admin__add__text{
-    font-size: var(--font-large);
-    font-weight: 700;
-    color: var(--dark-solid);
-}
-.admin__add__button{
-    font-size: var(--font-xlarge) ;
-    background-color: var(--primary-900);
-    color: var(--light-font-solid);
-    border-radius: var(--spacing-6);
-    border: none;
-    height: 39px;
-    width: 39px;
+
+.admin__header span iconify-icon {
+    color: var(--primary-900);
+    height: 45px;
+    width: 45px;
     cursor: pointer;
 }
-.admin__list__title{
-    font-family: var(--alternative-font);
-    font-size: var(--font-display);
-    font-weight: 700;
-}
-.admin__list__container{
+
+.admin-table{
     margin: var(--spacing-36) auto var(--spacing-68) var(--spacing-20);
+    
 }
-.admin__list__detail{
+.admin-table__header{
     display: grid;
-    grid-template-columns: 0.2fr 1fr 2fr 1fr 0.2fr 0.2fr;
+    grid-template-columns: 0.2fr 0.5fr 1.5fr 1fr 0.2fr 0.2fr;
 }
-.admin__list__detail-title{
-    font-size: var(--font-xsmall);
+.admin-table__header h3{
+    font-size: var(--font-large);
     font-weight: 700;
     margin: var(--spacing-16) auto;
 }
-.admin__list__detail-item{
-    font-size: var(--font-xsmall);
+
+.admin-table__row{
+    display: grid;
+    grid-template-columns: 0.4fr 1fr 3fr 2fr 0.4fr 0.4fr;
+}
+
+.admin-table__row p {
     font-weight: 500;
-    margin: var(--spacing-16) auto;  
+    margin: var(--spacing-8) auto; 
+    font-size: var(--font-large);
+    text-align: right;
+}
+
+.admin-table__row iconify-icon {
+    font-size: var(--font-xlarge);
 }

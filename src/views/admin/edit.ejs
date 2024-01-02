@@ -4,54 +4,111 @@
 
 <%- include('../partials/headerAdmin') %>
 
-    <main id="edit" class="container edit">
+    <main id="edit" class="container">
         <h2 class="edit__title">EDITAR ITEM</h2>
         <form class="edit__form" action="/admin/edit" method="post" enctype="application/x-www-form-urlencoded">
             <div class="form__flex">
                 <div class="form__box--flex">
                 <label class="form__label" for="collection" >Categoria:</label>
-                <select class="form__select" name="collection" id="collection" require>
-                    <option value="Figuras coleccionables">Figuras coleccionables</option>
-                    <option value="Llaveros">Llaveros</option>
-                    <option value="Remeras">Remeras</option>
-                </select>
+                    <select class="form__select" name="collection" id="collection" required>
+                        <% if(product.category_id == 1) { %>
+                            <option value="1" selected>Figuras coleccionables</option>
+                            <option value="2">Llaveros</option>
+                            <option value="3">Remeras</option>
+                        <% } %>
+                        <% if(product.category_id==2) { %>
+                            <option value="1">Figuras coleccionables</option>
+                            <option value="2" selected>Llaveros</option>
+                            <option value="3">Remeras</option>
+                            <% } %>
+                        <% if(product.category_id==3) { %>
+                            <option value="1">Figuras coleccionables</option>
+                            <option value="2">Llaveros</option>
+                            <option value="3" selected>Remeras</option>
+                            <% } %>
+                    </select>
                 </div>
                 <div class="form__box--flex">
                 <label class="form__label" for="collection">Licencia:</label>
-                <select class="form__select" name="collection" id="collection">
-                    <option value="" disabled selected hidden>Seleccionar</option>
-                    <option value="Harry Potter">Harry Potter</option>
-                    <option value="Pokemon">Pokemon</option>
-                    <option value="Star Wars">Star Wars</option>
-                    <option value="Deportes">Deportes</option>
+                <select class="form__select" name="collection" id="collection" required>
+                    <% if(product.licence_id==1) { %>
+                        <option value="1" selected>Pokemon</option>
+                        <option value="2">Star Wars</option>
+                        <option value="3">Harry Potter</option>
+                        <option value="4">Deportistas</option>
+                    <% } %>
+                    <% if(product.licence_id==2) { %>
+                        <option value="1">Pokemon</option>
+                        <option value="2" selected>Star Wars</option>
+                        <option value="3">Harry Potter</option>
+                        <option value="4">Deportistas</option>
+                    <% } %>
+                    <% if(product.licence_id==3) { %>
+                        <option value="1">Pokemon</option>
+                        <option value="2">Star Wars</option>
+                        <option value="3" selected>Harry Potter</option>
+                        <option value="4">Deportistas</option>
+                    <% } %>
+                    <% if(product.licence_id==4) { %>
+                        <option value="1">Pokemon</option>
+                        <option value="2">Star Wars</option>
+                        <option value="3">Harry Potter</option>
+                        <option value="4" selected>Deportistas</option>
+                    <% } %>
                 </select>
                 </div>
             </div>
             <div class="form__box--flex">
                 <label class="form__label" for="">Nombre del producto:</label>
-                <input class="form__input" type="text" name="" id="" placeholder="nombre del producto">
+                <input class="form__input" type="text" name="name" id="name" value="<%= product.product_name %>" required>
             </div>
             <div>
-                <textarea class="form__textarea" placeholder="Descripción del producto"></textarea>
+                <textarea name="description" id="description" cols="30" rows="10" required><%= product.product_description %></textarea>
             </div>
-            <div class="form__container">
-                <label class="form__title" for="">SKU:</label>
-                <input class="form__input" type="text" name="" id="" placeholder="codigo SKU">
-                <label class="form__title" for="">Precio:</label>
-                <input class="form__input" type="text" name="" id="" placeholder="Precio del Porducto">
-                <label class="form__title" for="">Stock:</label>
-                <input class="form__input" type="number" min="1">
+            <div class="form__flex">
+                <div class="form__box--flex">
+                    <label class="form__title" for="sku">SKU:</label>
+                    <input class="form__input" type="text" name="sku" id="sku" value="<%= product.sku %>" required>
+                </div>
+                <div class="form__box--flex">
+                    <label class="form__title" for="price">Precio:</label>
+                    <div class="form__input--wrapper"><span>$</span><input class="form__input" type="text" name="price" id="price" data-type="currency" value="<%= product.price %>" required></div>
+                </div>
+                <div class="form__box--flex">
+                    <label class="form__title" for="stock">Stock:</label>
+                    <div class="form__input--wrapper">
+                    <input class="form__input" type="text" name="stock" id="stock" value="<%= product.stock %>" required><span>unidades</span></div>
+                </div>
             </div>
             <div class="form__container">
                 <label class="form__title" for="">Descuento:</label>
-                <input class="form__input" type="number" min="0" max="100" placeholder="0%">
-                <label class="form__title" for="">Cuotas:</label>
-                <select class="form__select" name="cuotas" id="cuotas">
-                    <option value="" disabled selected hidden>Seleccionar</option>
-                    <option value="1 cuota">1 cuota</option>
-                    <option value="3 cuotas">3 cuotas sin interes</option>
-                    <option value="6 cuotas">6 cuotas sin interes</option>
-                    <option value="12 cuotas">12 cuotas sin interes</option>
+                <input class="form__input" type="text" name="discount" id="discount" value="<%= product.discount %>" >
+                <label class="form__title" for="dues">Cuotas:</label>
+                <select class="form__select" name="dues" id="dues">
+                    <% if(product.dues==1) { %>
+                        <option value="1" selected>1 cuota</option>
+                        <option value="3">3 cuotas sin interes</option>
+                        <option value="6">6 cuotas sin interes</option>
+                        <option value="12">12 cuotas sin interes</option>
+                    <% } %>
+                    <% if(product.dues==3) { %>
+                        <option value="1">1 cuota</option>
+                        <option value="3" selected>3 cuotas sin interes</option>
+                        <option value="6">6 cuotas sin interes</option>
+                        <option value="12">12 cuotas sin interes</option>
+                    <% } %>
+                    <% if(product.dues==6) { %>
+                        <option value="1">1 cuota</option>
+                        <option value="3">3 cuotas sin interes</option>
+                        <option value="6" selected>6 cuotas sin interes</option>
+                        <option value="12">12 cuotas sin interes</option>
+                        <% } %>
+                    <% if(product.dues==12) { %>
+                        <option value="1">1 cuota</option>
+                        <option value="3">3 cuotas sin interes</option>
+                        <option value="6">6 cuotas sin interes</option>
+                        <option value="12" selected>12 cuotas sin interes</option>
+                    <% } %>
                 </select>
             </div>
             <div class="form__container">
@@ -60,11 +117,11 @@
             </div>
             <div class="form__container-img">
                 <div>
-                    <img class="form__img" src="/img/pokemon/pikachu-1.webp" alt="">
+                    <img class="edit__img" src="<%= product.img_front %>" alt="">
                     <p class="form__text">Frente</p>
                 </div>
                 <div>
-                    <img class="form__img" src="/img/pokemon/pikachu-box.webp" alt="">
+                    <img class="edit__img" src="<%= product.img_back %>" alt="">
                     <p class="form__text">Dorso</p>
                 </div>
             </div>

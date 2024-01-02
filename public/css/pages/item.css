@@ -1,6 +1,7 @@
 .item__container{
     display: flex;
     margin: var(--spacing-68) auto;
+    padding: var(--spacing-128);
 }
 
 .item__cover img{
@@ -76,7 +77,7 @@
 }
 
 .item__quantity {
-    background-color: var(--dark-bg-solid-900);
+    background-color: var(--dark-bg-solid);
     color: var(--light-font-solid);
     font-size: var(--font-medium);
     cursor: pointer;
