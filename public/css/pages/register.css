@@ -1,45 +1,22 @@
-.register {
-    display: flex; 
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center; 
-    padding: var(--spacing-68) 0;
-    height: 60vh;
-}
-
-.register__title{
-    font-family: var(--alternative-font);
-    font-size: var(--font-jumbo);
-    font-weight: 700;
-    text-align: right;
-    margin: var(--spacing-12) auto;
-}
-
-.register__form{
-    display: flex;
-    flex-direction: column; 
-    align-items: center; 
-    gap: var(--spacing-28);
-    padding: var(--spacing-28) 0;  
-}
-.register__message {
-    font-family: var(--alternative-font);
-    font-size: var(--font-xlarge);
-    font-weight: 500;
-    text-align: right;
-}
-
-.register__shop{
-    font-size: var(--font-xsmall);
-    color: var(--light-font-solid);
-    background-color: var(--primary-solid);
-    padding: var(--spacing-10);
-    transition: all .3s ease-in-out;
-    cursor:pointer;
-    width: var(--spacing-128);
+.description__register {
+    font-size: var(--font-30-xlarge);
     text-align: center;
 }
 
-.register__shop:hover {
-    background-color: var(--secondary-solid);
+.register__box {
+    width: clamp(250px, 100%, 900px);
+    margin: var(--spacing-128) auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: var(--spacing-24);
+}
+
+.terms {
+    font-size: var(--font-18-small);
+}
+
+a .terms {
+    color: var(--azul);
 }

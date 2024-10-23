@@ -1,35 +1,46 @@
-<%- include('./partials/head') %>
+<%- include('partials/header') %>
 
-<body>
-    <%- include('./partials/header') %>
-    <main class="container contact">
-        <form class="contact__container" action="">
-            <h2 class="contact__title">CONTACTO</h2>
-            <h3 class="contact__message">Completa el formulario para ser contactado</h3>
-            <div>
-                <div class="contact__data">
-                    <label class="contact__sub-title" for="text">Nombre:</label>
-                    <input class="contact__input" type="text" name="" id="" placeholder="Ingrese su Nombre">
-                    <label class="contact__sub-title" for="text">Apellido:</label>
-                    <input class="contact__input" type="text" name="" id="" placeholder="Ingrese su Apellido">
-                </div>
-                <div class="contact__data">
-                    <label class="contact__sub-title" for="email">Email:</label>
-                    <input class="contact__input" type="email" name="" id="" placeholder="sumail@mail.com">
-                    <label class="contact__sub-title" for="tel">Telefono:</label>
-                    <input class="contact__input" type="tel" name="" id="" placeholder="Ingrese su Telefono">
-                </div>
-                <div>
-                    <textarea class="contact__textarea" placeholder="Escriba su consulta"></textarea>
+    <main class="container">
+        <h2 class="contact__title">Contacto</h2>
+        <form class="contact__form" id="contactForm" action="" method="POST">
+            <!-- Nombre -->
+            <div class="contact__item col-6">
+                <label class="form-label contact__subtitle" for="name">Nombre</label>
+                <input class="form-control form-control-lg" id="name" type="text" placeholder="Ingresar nombre"
+                    data-sb-validations="required" />
+                <div class="invalid-feedback" data-sb-feedback="name:required">Este campo es obligatorio.</div>
+            </div>
+
+            <!-- Email  -->
+            <div class="contact__item col-6">
+                <label class="form-label contact__subtitle" for="emailAdd">Email</label>
+                <input class="form-control form-control-lg" id="emailAdd" type="email" placeholder="Ingresar Email"
+                    data-sb-validations="required, email" />
+                <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Este campo es obligatorio.</div>
+                <div class="invalid-feedback" data-sb-feedback="emailAddress:email">La direccion de Email no es valida.
                 </div>
             </div>
-            <div>
-                <button type="submit" class="contact__submit" href="">Enviar</button>
+
+            <!-- Mensaje -->
+            <div class="contact__item col-6">
+                <label class="form-label contact__subtitle" for="message">Mensaje</label>
+                <textarea class="form-control form-control-lg" id="message" type="text" placeholder="Ingresar mensaje"
+                    style="height: 10rem;" data-sb-validations="required"></textarea>
+                <div class="invalid-feedback" data-sb-feedback="message:required">Este campo es obligatorio.</div>
             </div>
+
+
+            <!-- Enviar -->
+            <div class="col-2 d-grid">
+                <button class="contact__button" type="submit">Enviar</button>
+            </div>
+            <input type="hidden" name="_next" value="http://127.0.0.1:5500/">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_subject" value="Consulta desde BookShop">
+            <input type="hidden" name="_template" value="table">
         </form>
     </main>
-    
-    <!--Inicio Footer-->
-    <%- include('./partials/footer') %>
-</body>
-</html>
+
+
+
+    <%- include('partials/footer') %>

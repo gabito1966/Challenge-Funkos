@@ -1,97 +1,113 @@
-    <%- include('../partials/head') %>
-    
-<body>
-    
-    <%- include('../partials/header') %>
-    
-
-    <main id="shop" class="grid-container container">
-        <aside class="shop__aside">
-            <div>
-                <label class="shop__title" for="search">BUSCAR</label>
-                <input class="shop__input" name="search" type="text" placeholder="Item o categoría">
-            </div>
-            <div>
-                <label class="shop__title" for="orderby">ORDENAR POR</label>
-                <select class="shop__order" name="orderby" id="orderby">
-                    <option value="az">A-Z</option>
-                    <option value="za">Z-A</option>
-                    <option value="desc">Mayor precio</option>
-                    <option value="asc">Menor precio</option>
-                </select>
-            </div>
-            <div>
-                <span class="shop__title">PRECIO</span>
-                <div class="shop__price-content">
-                    <label class="shop__text" for="min">MIN:</label>
-                    <input class="shop__box" type="number" name="min" id="min" placeholder="Precio mínimo">
-                    <label class="shop__text" for="max">- MAX:</label>
-                    <input class="shop__box" type="number" name="max" id="max" placeholder="Precio máximo">
-                </div>
-            </div>
-            <div>
-                <p class="shop__text">FILTRAR</p>
-                <div>
-                    <div class="shop__items">
-                        <input class="shop__checkbox" type="checkbox" name="NUEVOS" id="nuevos">
-                        <label for="nuevos" class="shop__checkbox-text">NUEVOS</label>
-                    </div>
-                    <div class="shop__items">
-                        <input class="shop__checkbox" type="checkbox" name="OFERTAS" id="ofertas">
-                        <label for="ofertas" class="shop__checkbox-text">OFERTAS</label>
-                    </div>
-                    <div class="shop__items">
-                        <input class="shop__checkbox" type="checkbox" name="EDICIÓN_ESPECIAL" id="edicion-especial">
-                        <label for="edicion-especial" class="shop__checkbox-text">EDICIÓN ESPECIAL</label>
-                    </div>
-                    <div class="shop__items">
-                        <input class="shop__checkbox" type="checkbox" name="FAVORITOS" id="favoritos">
-                        <label for="favoritos" class="shop__checkbox-text">FAVORITOS</label>
-                    </div>
-                </div>
-            </div>
-        </aside>
-        <section class="grid-slider">
-            <div class="slider">
-                <ul class="slider__items">
-                    <% data.forEach( item => { %>
-                        <li class="slider__item">
+<%- include('../partials/header') %>
+    <main class="container">
+        <section class="row">
+            <aside class="col-lg-3 shop__form mh-md-100">
+                <form action="#" method="GET" id="search-form">
+                    <div class="form__search">
+                        <div class="form__search--item d-flex flex-column">
+                            <label class="label__shop" for="buscar">BUSCAR</label>
+                            <input class="form-control-lg" type="text" name="buscar" id="buscar"
+                                placeholder="item o categoría">
+                            <label class="label__shop" for="ordenar">ORDENAR POR</label>
+                            <div class="select__content">
+                                <select class="form-select-lg w-100" name="ordenar" id="order">
+                                    <option hidden selected>Selecciona una opción</option>
+                                    <option value="mas">Mayor a menor</option>
+                                    <option value="menos">Menor a mayor</option>
+                                    <option value="reciente">Más reciente</option>
+                                </select>
+                                <iconify-icon class="arrow" icon="eva:arrow-down-fill"></iconify-icon>
+                            </div>
+                        </div>
+                        <label class="label__shop" for="precio">PRECIO</label>
+                        <div class="precio">
+                            <label for="min">MIN</label>
+                            <input class="form-control-sm w-25" type="text" placeholder="0">
+                            <span>-</span>
+                            <label for="max">MAX</label>
+                            <input class="form-control-sm w-25" type="text" placeholder="0">
+                        </div>
+                        <div class="form__filtrar">
+                            <label class="label__shop">FILTRAR</label>
+                            <div class="checkbox__content">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="nuevos" id="nuevos">
+                                    <label class="form-check-label checkbox__label" for="nuevos">NUEVOS</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="ofertas" id="ofertas">
+                                    <label class="form-check-label checkbox__label" for="ofertas">OFERTAS</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="especial" id="especial">
+                                    <label class="form-check-label checkbox__label" for="especial">EDICIÓN
+                                        ESPECIAL</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="favoritos" id="favoritos">
+                                    <label class="form-check-label checkbox__label" for="favoritos">FAVORITOS</label>
+                                </div>
+                            </div>
+                        </div>
+                </form>
+            </aside>
+            <article class="col-lg-9 shop">
+                <ul class="row shop__items">
+                    <% items.forEach(item=> { %>
+                        <li class="col-md-6 col-lg-4 shop__item" data-created-at="<%= item.create_time %>">
                             <article class="card-item">
-                                <a class="card-item__link" href="/shop/item/<%= item.product_id %>">
+                                <a class="card-item__link" href="/shop/item/<%= item.product_id%>">
                                     <picture class="card-item__cover">
-                                        <img class="card-item__img--front" src="<%= item.img_front %>"
-                                            alt="Figura coleccionable Funko de un Stormtrooper">
-                                        <img class="card-item__img--back" src="<%= item.img_back %>"
-                                            alt="Figura coleccionable Funko de un Stormtrooper en caja">
+                                        <img class="card-item__img--front" src="../../img/<%= item.image_front %>"
+                                            alt="Tropper">
+                                        <img class="card-item__img--back" src="../../img/<%= item.image_back %>"
+                                            alt="Trooper Box">
+                                        <span class="card-item__tag">NUEVO</span>
                                     </picture>
                                     <div class="card-item__content">
-                                        <p class="card-item__licence"><%= item.licence_name %></p>
-                                        <h3 class="card-item__name"><%= item.product_name %></h3>
-                                        <p class="card-item__price">$ <%= item.price %>.-</p>
-                                        <p class="card-item__promo"><%= item.dues %> CUOTAS SIN INTERÉS</p>
+                                        <p class="card-item__licence">
+                                            <%= item.licence_name %>
+                                        </p>
+                                        <h4 class="card-item__name">
+                                            <%= item.product_name %>
+                                        </h4>
+                                        <p class="card-item__price">$
+                                            <%= item.price %>
+                                        </p>
+                                        <p class="card-item__promo">
+                                            <%= item.dues %> cuotas sin interés
+                                        </p>
                                     </div>
                                 </a>
                             </article>
                         </li>
-                <% }) %>
+                        <% }) %>
+                            <div class="pagination">
+                                <% if (currentPage> 1) { %>
+                                    <a class="pagination__link" href="/shop?page=<%= currentPage - 1 %>">&lt;</a>
+                                    <% } %>
+
+                                        <% for (let i=1; i <=totalPages; i++) { %>
+                                            <% if (i===currentPage) { %>
+                                                <a class="pagination__link pagination__link--selected" href="#">
+                                                    <%= i %>
+                                                </a>
+                                                <% } else { %>
+                                                    <a class="pagination__link" href="/shop?page=<%= i %>">
+                                                        <%= i %>
+                                                    </a>
+                                                    <% } %>
+                                                        <% } %>
+
+                                                            <% if (currentPage < totalPages) { %>
+                                                                <a class="pagination__link"
+                                                                    href="/shop?page=<%= currentPage + 1 %>"">&gt;</a>
+                                                    <% } %>
+                            </div>
                 </ul>
-            </div>
-            <div class="pagination">
-                <a class="pagination__link pagination__link--chevron" href="#"><</a>
-                <a class="pagination__link pagination__link--selected" href="#">1</a>
-                <a class="pagination__link" href="#">2</a>
-                <a class="pagination__link" href="#">3</a>
-                <a class="pagination__link" href="#">4</a>
-                <a class="pagination__link" href="#">5</a>
-                <a class="pagination__link" href="#">></a>
-            </div>
+                <%- console.log(" currentPage:", currentPage, "totalPages:" , totalPages) %>
+            </article>
+
         </section>
     </main>
-
-    <!--Inicio Footer-->
     <%- include('../partials/footer') %>
-
-    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-    
-</body>
-</html>

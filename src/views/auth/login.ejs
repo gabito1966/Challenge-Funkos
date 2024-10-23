@@ -1,31 +1,28 @@
-<%- include('../partials/head') %>
+<%- include('../partials/header') %>
 
-<body>
-<%- include('../partials/headerAdmin') %>
-
-    <main id="login" class="login container">
+    <main id="login" class="login__box container">
         <h2 class="login__title">INGRESAR A MI CUENTA</h2>
-        <form class="login__form form" action="/auth/login" method="post">
-                <div class="form__box--grid">
-                    <label class="form__label" for="email">Email:</label>
-                    <input class="form__input" type="text" name="email" id="email" placeholder="tumail@mail.com">
+
+        <form class="login__form" action="/auth/login" method="post">
+            <div class="form__item">
+                <label for="email" class="form__label">Email:</label>
+                <input class="form__input" type="email" name="email" id="email" placeholder="johndoe@correo.com">
+            </div>
+            <div class="form__item">
+                <label for="password" class="form__label">Contraseña:</label>
+                <input class="form__input" type="password" name="password" id="password"
+                    placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
+            </div>
+            <div class="form__submit">
+                <input class="form__btn" type="submit" value="Ingresar">
+                <div class="form__remember">
+                    <input class="form-check-login" type="checkbox" name="remember" id="remember">
+                    <label class="checkbox__label--login" for="remember">Recordarme</label>
                 </div>
-                <div class="form__box--grid">
-                    <label class="form__label" for="password">Contraseña:</label>
-                    <input class="form__input" type="password" placeholder="Password">
-                </div>         
-                <div class="form__submission">
-                    <a class="login__shop" href="/shop">Ingresar</a>
-                    <input type="checkbox" name="loginShop" id="loginShop">
-                    <label class="login__remember" for="">Recordarme</label>
-                </div>
-                <p class="login__recovery" href="">Olvidé mi contraseña</p>
-    
+            </div>
+            <a href="#" class="form__lost">Olvidé mi contraseña</a>
         </form>
     </main>
 
-    <!--Inicio Footer-->
+
     <%- include('../partials/footer') %>
-    
-</body>
-</html>

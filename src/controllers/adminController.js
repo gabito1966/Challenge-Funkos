@@ -1,93 +1,148 @@
-const path = require('path');
-const { getAll, getOne, create, edit, deleteOne } = require('../models/product.model');
+const { getAll } = require('../models/itemModel');
 
-module.exports = {
-    admin: async (req, res) => { 
+const ItemsService = require('../services/itemServices');
+const CategoryService = require('../services/categoryService');
+const LicenceService = require('../services/licenceService');
 
-        const data = await getAll(); 
+// Controladores relacionados con la administración (CRUD) de productos
+const adminControllers = {
+    // Muestra la vista principal del panel de administración
+    adminView: async (req, res) => {
+        try {
+            const { data } = await ItemsService.getAllItems();
+            res.render('./admin/admin', {
+                view: {
+                    title: 'Administración de productos | Funkoshop'
+                },
+                items: data
+            });
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Error al obtener productos para la vista de administración');
+        }
+    },
 
-        res.render(path.resolve(__dirname, '../views/admin/admin.ejs'), {
-                title: 'Admin | Funkoshop',
-                data
-            })
-        
-        },
-    createView: (req, res) => res.render(path.resolve(__dirname, '../views/admin/create.ejs'), {
-            title: 'Create ITEM | Admin Funkoshop'
-        }),
+    // Obtiene todos los productos
+    itemsView: async (req, res) => {
+        try {
+            let data = await getAll();
 
+            if (data.isError) {
+                data = 'Hubo un error';
+            }
+
+            res.send(data);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Error al obtener productos para la vista de administración');
+        }
+    },
+
+    // Muestra la vista de creación de productos nuevos
+    createView: async (req, res) => {
+        try {
+            const { data: categories } = await CategoryService.getAllItemsCategories();
+            const { data: licences } = await LicenceService.getAllItemsLicences();
+
+            res.render('./admin/create', {
+                view: {
+                    title: 'Crear Producto | Admin Funkoshop'
+                },
+                categories,
+                licences
+            });
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Error al obtener datos para la vista de creación');
+        }
+    },
+
+    // Crea un producto nuevo y redirige a la vista de administración de productos
     createItem: async (req, res) => {
-
-        const product_schema = {
-            product_name: req.body.name,
-            product_description: req.body.description,
-            price: Number(req.body.price),
-            stock: Number(req.body.stock),
-            discount: Number(req.body.discount),
-            sku: req.body.sku,
-            dues: Number(req.body.dues),
-            img_front: '/img/products/'+ req.files[0].filename,
-            img_back: '/img/products/'+ req.files[1].filename,
-            category_id: Number(req.body.category),
-            licence_id: Number(req.body.licence)
+        try {
+            const item = req.body;
+            const files = req.files;
+            await ItemsService.createItem(item, files);
+            res.redirect('/admin');
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Error al crear un nuevo producto');
         }
-            
-        await create([Object.values(product_schema)]);
-
-        res.redirect('/admin');
     },
 
+    // Crea varios productos al mismo tiempo...(no implementado)
+    bulkCreate: async (req, res) => {
+        try {
+            const items = req.body;
+            const result = await ItemsService.create(items.map(el => Object.values(el)));
+            res.send(result);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Error al realizar la creación masiva de productos');
+        }
+    },
+
+    // Muestra la vista de edición de productos existentes y obtiene los datos del producto a editar
     editView: async (req, res) => {
-        const { id } = req.params;
-        const [product] = await getOne({product_id : id});
+        try {
+            const id = req.params.id;
 
-        res.render('../views/admin/edit.ejs', {
-            title: 'Edit Product | Admin Funkoshop',
-            product
-        })
-    },
-    editItem: async (req, res) => {
-        const { id } = req.params;
-    const haveImages = req.files.lenght !== 0;
+            console.log('ID recibido:', id);
 
-    const product_schema =  haveImages 
-    ?   {
-            product_name: req.body.name,
-            product_description: req.body.description,
-            price: Number(req.body.price),
-            stock: Number(req.body.stock),
-            discount: Number(req.body.discount),
-            sku: req.body.sku,
-            dues: Number(req.body.dues),
-            img_front: '/img/products/' + req.files[0].filename,
-            img_back: '/img/products/' + req.files[1].filename,
-            category_id: Number(req.body.category),
-            licence_id: Number(req.body.licence)
+            const { data: categories } = await CategoryService.getAllItemsCategories();
+            const { data: licences } = await LicenceService.getAllItemsLicences();
+            const { data } = await ItemsService.getItem(id);
+
+            //console.log(categories, licences);
+
+            res.render('./admin/edit', {
+                view: {
+                    title: `Editar Producto #${id} | Admin Funkoshop`
+                },
+                item: data[0],
+                categories,
+                licences
+            });
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Error al obtener datos para la vista de edición');
         }
-        :   {
-            product_name: req.body.name,
-            product_description: req.body.description,
-            price: Number(req.body.price),
-            stock: Number(req.body.stock),
-            discount: Number(req.body.discount),
-            sku: req.body.sku,                    
-            dues: Number(req.body.dues),
-            category_id: Number(req.body.category),
-            licence_id: Number(req.body.licence)
-        };
-        
-        await edit(product_schema, { product_id: id })
-        res.redirect('/shop')
-    },    
-        
-    deleteItem: async (req, res) =>{
-        const { id }= req.params;
+    },
 
-        return await deleteOne({ product_id: id});
+    // Edita un producto existente y redirige a la vista de administración de productos
+    editItem: async (req, res) => {
+        try {
+            const id = req.params.id;
+            const item = req.body;
+            const files = req.files;
 
-        res.redirect('/admin')
-    }
+            await ItemsService.editItem(item, files, id);
+            res.redirect('/admin');
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Error al editar el producto');
+        }
+    },
 
-};
+    // Elimina un producto existente y redirige a la vista de administración de productos
+    deleteItem: async (req, res) => {
+        try {
+            const id = req.params.id;
 
+            await ItemsService.deleteItem(id);
+            res.redirect('/admin');
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Error al eliminar el producto');
+        }
+    },
 
+    // Muestra la vista de inicio de sesión
+    loginView: (req, res) => res.render('./auth/login', {
+        view: {
+            title: 'Login | Funkoshop'
+        }
+    }),
+}
+
+module.exports = adminControllers;

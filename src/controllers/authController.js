@@ -1,34 +1,46 @@
 const path = require('path');
 
-const credentials = {
-    email: 'gabriel@gmail.com',
-    password: 'gabriel1234'
+const userCredentials = {
+    email: process.env.USER_EMAIL,
+    password: process.env.USER_PASSWORD
 }
 
+// Controladores relacionados con la autenticación (utilizada escritura alternativa)
 module.exports = {
-    login: (req, res) => res.render(path.resolve(__dirname, '../views/auth/login.ejs'), {
-        title: 'Login | Funkoshop'
+    // Muestra vista de login
+    loginView: (req, res) => res.render('./auth/login', {
+        view: {
+            title: 'Login | Funkoshop'
+        }
     }),
-    doLogin: (req, res) => {
-        const {email, password} = req.body;
-        const validateEmail = credentials.email == email;
-        const validatePassword = credentials.password == password;
-        
-        req.session.isLogged = validateEmail && validatePassword ? true : false;
+
+    loginUser: (req, res) => {
+        const { email, password } = req.body;
+        const emailValidation = userCredentials.email == email;
+        const passwordValidation = userCredentials.password == password;
+
+        req.session.isLogged = emailValidation && passwordValidation ? true : false;
 
         if (req.session.isLogged) {
             res.locals.isLogged = true;
             return res.redirect('/admin');
         }
+
         return res.status(401).send('Credenciales inválidas');
     },
-    register: (req, res) => res.render(path.resolve(__dirname,'../views/auth/register.ejs'), {
-        title: 'Register | Funkoshop',
+
+    // Muestra vista de registro de usuarios
+    registerView: (req, res) => res.render('./auth/register', {
+        view: {
+            title: 'Registro | Funkoshop'
+        }
     }),
-    
-    doRegister: (req, res) => res.send(" Register route that recieve the data when"),
-    logout: (req, res) => {
+
+    registerUser: (req, res) => res.send('Route que recibe la data de registro de un usuario al clicar botón'),
+
+    // Cierra sesión del usuario y redirige a la página principal
+    logoutUser: (req, res) => {
         req.session.isLogged = false;
-        res.send("Sesion finalizada con exito")
+        res.redirect('/home');
     },
 }

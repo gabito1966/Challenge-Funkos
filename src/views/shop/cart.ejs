@@ -1,101 +1,203 @@
-<%- include('../partials/head') %>
+<%- include('../partials/header') %>
 
-<body>
-    <%- include('../partials/header') %>
-    
+    <main class="container main__cart">
+        <section class="cart__content">
+            <h2 class="cart__title">CARRITO DE COMPRAS</h2>
+            <section class="cart__items">
+                <article class="row cart__card cart__card--titles">
+                    <span class="col-2"></span>
+                    <span class="col-5">detalle de producto</span>
+                    <span class="col-3">cantidad</span>
+                    <span class="col-2">total</span>
+                    <span class="col-1"></span>
+                </article>
 
-    <main class="container">
-        <h2 class="cart__title">CARRITO DE COMPRAS</h2>
-        <section class="cart__header">
-            <h3 class="cart__header__title">DETALLE DE PRODUCTO</h3>
-            <h3 class="cart__header__title">CANTIDAD</h3>
-            <h3 class="cart__header__title">TOTAL</h3>
-    
+                <% cart.forEach(item=> { %>
+                    <article id="cart__container" class="row cart__card cart__card--prod">
+                        <div class="col-12 col-md-2 col-lg-2">
+                            <img class="cart__item--img" src="../img/<%= item.image_front %>">
+                        </div>
+                        <div class="col-12 col-md-5 col-lg-5">
+                            <h2 class="cart__item--name">
+                                <%= item.product_name %>
+                            </h2>
+                            <p class="cart__item--licence">
+                                <%= item.licence_name %>
+                            </p>
+                            <p class="cart__item--price price">Precio unitario: $<%= item.price %>
+                            </p>
+                        </div>
+
+                        <div class="col-5 col-md-2 col-lg-2 d-flex">
+                            <input class="items__input items__input--cart" type="text" name="quantity"
+                                id="<%= 'quantityOne' + item.product_id %>" value="<%= item.quantity %>" placeholder="">
+                            <div class="items__cart--btn">
+                                <button data-productid="<%= item.product_id %>" class="items__cart--mas red">+</button>
+                                <button data-productid="<%= item.product_id %>"
+                                    class="items__cart--menos red">-</button>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-2 col-lg-2 cart__item--total" id="<%= 'total' + item.product_id %>">$
+                            <%= item.total %>
+                        </div>
+
+                        </div>
+
+                        <button data-productid="<%= item.product_id %>"
+                            class="col-1 col-md-1 col-lg-1 d-flex justify-content-end cart__delete">
+                            <iconify-icon class="cart__item--delete" icon="iconoir:delete-circle"></iconify-icon>
+                        </button>
+                        <!-- <%= console.log(item) %> -->
+                    </article>
+                    <% }) %>
+            </section>
         </section>
-        <section class="cart__item__container">
-            <div class="cart__item__detail">
-                <picture>
-                    <img class="img__funkos" src="/img/star-wars/baby-yoda-1.webp" alt="Funko Stark Wars Baby Yoda">
-                </picture>
-                <div>
-                    <h3 class="cart__item__detail__name">BABY YODA BLUEBALL</h3>
-                    <p class="cart__item__detail__licence">STAR WARS</p>
-                    <p class="cart__item__detail__price">precio: $ 1799,99</p>
-                </div>
-            </div>
-            <div class="container__quantity">
-                <input class="cart__item__input" type="text" id="quantity" name="quantity" value="0" autofocus required>
-                <div class="container__button">
-                    <button id="add" class="cart__item__quantity" type="button">+</button>
-                    <button id="subtract" class="cart__item__quantity" type="button">-</button>
-                </div>
-            </div>
-            <div>
-                <p>$ 3599,98</p>
-            </div>
-    
-            <img class="delete_trash" src="/img/icons/delete_trash.svg" alt="">
-    
-        </section>
-        <section class="cart__item__container">
-            <div class="cart__item__detail">
-                <picture>
-                    <img class="img__funkos" src="/img/pokemon/pidgeotto-1.webp" alt="Funko Stark Wars Baby Yoda">
-                </picture>
-                <div>
-                    <h3 class="cart__item__detail__name">PIDGEOTTO</h3>
-                    <p class="cart__item__detail__licence">POKEMON</p>
-                    <p class="cart__item__detail__price">precio: $ 1799,99</p>
-                </div>
-            </div>
-            <div class="container__quantity">
-                <input class="cart__item__input" type="text" id="quantity" name="quantity" value="1" autofocus required>
-                <div class="container__button">
-                    <button id="add" class="cart__item__quantity" type="button">+</button>
-                    <button id="subtract" class="cart__item__quantity" type="button">-</button>
-                </div>
-            </div>
-            <div>
-                <p>$ 3599,98</p>
-            </div>
-    
-            <img class="delete_trash" src="/img/icons/delete_trash.svg" alt="">
-        </section>
-    
-        <section class="cart__resumen container">
-            <div>
-                <div class="cart__resumen__container-title">
-                    <h1 class="cart__resumen__title">RESUMEN</h1>
-                </div>
-    
-                <div class="cart__resumen__container">
-                    <div class="cart__resumen__detail">
-                        <p class="cart__resumen__sub-title">CANTIDAD DE ELEMENTOS </p>
-                        <p class="cart__resumen__amount">3</p>
+
+        <div class="resume">
+            <h2 class="cart__title">RESUMEN</h2>
+        </div>
+        <section class="d-flex flex-column justify-content-end align-items-end">
+            <article>
+                <div class="row cart__card cart__resume">
+                    <div class="col-12 col-md-4 col-lg-6 cart__card--titles">
+                        <p class="text-left">Cantidad de Elementos</p>
+                        <p class="text-left">Subtotal</p>
+                        <p class="text-left">Envío</p>
                     </div>
-                    <div class="cart__resumen__detail">
-                        <p class="cart__resumen__sub-title">SUBTOTAL</p>
-                        <p class="cart__resumen__amount">$ 5.399,97</p>
+                    <div class="col-12 col-md-4 col-lg-6 resume__text">
+                        <p id="cartItemCount" class="text-right">
+                            <%= getTotalQuantity(cart) %>
+                        </p>
+                        <p id="cartSubtotal" class="text-right">$ <%= getSubtotal(cart) %>
+                        </p>
+                        <p class="text-right">$ 0,00</p>
                     </div>
-                    <div class="cart__resumen__detail">
-                        <p class="cart__resumen__sub-title">ENVIO</p>
-                        <p class="cart__resumen__amount">$ 0,00</p>
+                    <span class="linea p-0"></span>
+                    <div class="col-12 col-md-4 col-lg-6 p-0">
+                        <p class="total-left">TOTAL</p>
                     </div>
-                    <div class="cart__resumen__detail">
-                        <p class="cart__resumen__total">TOTAL</p>
-                        <p class="cart__resumen__total-amount">$ 5.399,97</p>
+                    <div class="col-12 col-md-4 col-lg-6 p-0">
+                        <p id="cartTotal" class="text-right">$ <%= getCartTotal(cart) %>
+                        </p>
+                        </p>
                     </div>
                 </div>
-                <button class="button__pay" type="submit">IR A PAGAR</button>
-            </div>
+                <button class="col-12 col-md-4 col-lg-6 cart__pay w-100" onclick="mensajeLogin()">ir a pagar</button>
+            </article>
         </section>
-    
     </main>
-    
-    <!--Inicio Footer-->
+
     <%- include('../partials/footer') %>
 
-    <script src="/js/cart"></script>
-    
-</body>
-</html>
+        <% function getTotalQuantity(cart) { %>
+            <%= cart.reduce((total, item)=> total + item.quantity, 0) %>
+                <% } %>
+
+                    <% function getSubtotal(cart) { %>
+                        $<%= cart.reduce((total, item)=> total + (item.price * item.quantity), 0).toFixed(2) %>
+                            <% } %>
+
+                                <% function getCartTotal(cart) { %>
+                                    $<%= cart.reduce((total, item)=> total + (item.price * item.quantity), 0).toFixed(2)
+                                        %>
+                                        <% } %>
+
+                                            <script>
+                                                document.addEventListener('DOMContentLoaded', function () {
+                                                    const quantityInputs = document.querySelectorAll('.items__input--cart');
+                                                    const addButtons = document.querySelectorAll('.items__cart--mas');
+                                                    const subtractButtons = document.querySelectorAll('.items__cart--menos');
+                                                    const deleteButtons = document.querySelectorAll('.cart__delete');
+
+                                                    addButtons.forEach(button => {
+                                                        button.addEventListener('click', function () {
+                                                            const productId = this.getAttribute('data-productid');
+                                                            updateCartItemQuantity(productId, 'add');
+                                                        });
+                                                    });
+
+                                                    subtractButtons.forEach(button => {
+                                                        button.addEventListener('click', function () {
+                                                            const productId = this.getAttribute('data-productid');
+                                                            updateCartItemQuantity(productId, 'subtract');
+                                                        });
+                                                    });
+
+                                                    deleteButtons.forEach(button => {
+                                                        button.addEventListener('click', function () {
+                                                            const productId = this.getAttribute('data-productid');
+                                                            deleteCartItem(productId);
+                                                        });
+                                                    });
+
+                                                    function updateCartItemQuantity(productId, action) {
+                                                        const quantityInput = document.getElementById(`quantityOne${productId}`);
+                                                        const totalElement = document.getElementById(`total${productId}`);
+                                                        const cartItemCount = document.getElementById('cartItemCount');
+                                                        const cartSubtotal = document.getElementById('cartSubtotal');
+                                                        const cartTotal = document.getElementById('cartTotal');
+                                                        const summaryElement = document.getElementById('cartSummary');
+
+                                                        const quantity = parseInt(quantityInput.value) || 1;
+
+                                                        fetch(`/shop/cart/updateQuantity/${productId}/${action}`, {
+                                                            method: 'POST',
+                                                            headers: {
+                                                                'Content-Type': 'application/json',
+                                                            },
+                                                            body: JSON.stringify({ quantity }),
+                                                        })
+                                                            .then(response => response.json())
+                                                            .then(data => {
+                                                                if (data.success) {
+                                                                    quantityInput.value = data.cartItem.quantity;
+
+                                                                    if (totalElement) {
+                                                                        totalElement.textContent = `$ ${data.cartItem.total.toFixed(2)}`;
+                                                                    }
+
+                                                                    // Actualiza los valores en el resumen
+                                                                    if (cartItemCount && cartSubtotal && cartTotal) {
+                                                                        cartItemCount.textContent = data.cart.reduce((acc, item) => acc + item.quantity, 0);
+                                                                        cartSubtotal.textContent = `$ ${data.cart.reduce((acc, item) => acc + item.total, 0).toFixed(2)}`;
+                                                                        cartTotal.textContent = `$ ${data.cart.reduce((acc, item) => acc + item.total, 0).toFixed(2)}`;
+                                                                    }
+
+                                                                    if (summaryElement) {
+                                                                        summaryElement.textContent = `$ ${data.cart.reduce((acc, item) => acc + item.total, 0).toFixed(2)}`;
+                                                                    }
+
+                                                                } else {
+                                                                    console.error('Error al actualizar la cantidad del carrito:', data.error);
+                                                                }
+                                                            })
+                                                            .catch(error => {
+                                                                console.error('Error al actualizar la cantidad del carrito:', error);
+                                                            });
+                                                    }
+
+                                                    function deleteCartItem(productId) {
+                                                        fetch(`/shop/cart/delete/${productId}`, {
+                                                            method: 'POST',
+                                                        })
+                                                            .then(response => response.json())
+                                                            .then(data => {
+                                                                if (data.success) {
+                                                                    // Recarga al eliminar el carrito
+                                                                    location.reload();
+                                                                } else {
+                                                                    console.error('Error al eliminar el artículo del carrito:', data.error);
+                                                                }
+                                                            })
+                                                            .catch(error => {
+                                                                console.error('Error al eliminar el artículo del carrito:', error);
+                                                            });
+                                                    }
+
+                                                });
+
+                                                function mensajeLogin() {
+                                                    alert('Para continuar con el pago, debes ser un usuario registrado!');
+                                                    window.location.href = "/auth/register";
+                                                }
+                                            </script>

@@ -1,28 +1,18 @@
 const express = require('express');
 const router = express.Router();
-const upload = require('../middlewares/uploadFiles')
+const uploadFiles = require('../middlewares/uploadFiles');
+const { isLogged } = require('../middlewares/login');
+const adminControllers = require('../controllers/adminControllers');
 
-const {
-    admin, 
-    createView, 
-    editView, 
-    createItem, 
-    editItem, 
-    deleteItem 
-}= require('../controllers/adminController');
+// router.use(isLogged);
 
-const isLogged = (req, res, next) => {
-    if(req.session.isLogged){
-        next();
-    }
-    res.status(401).send('Debes loguearte para ingresar a esta vista');
-}
-
-router.get("/", admin);
-router.get("/create", createView);
-router.post("/create", upload.array('images', 2), createItem);
-router.get("/edit/:id", editView);
-router.put("/edit/:id", upload.array('images', 2), editItem);
-router.delete("/delete/:id", deleteItem);
+// Configuramos las rutas necesarias para las vistas de administración
+router.get('/', isLogged, adminControllers.adminView);
+router.get('/create', isLogged, adminControllers.createView);
+router.post('/create', isLogged, uploadFiles.array('images', 2), adminControllers.createItem);
+router.post('/create/bulk', isLogged, adminControllers.bulkCreate);
+router.get('/edit/:id', isLogged, adminControllers.editView);
+router.put('/edit/:id', isLogged, adminControllers.editItem);
+router.delete('/delete/:id', isLogged, adminControllers.deleteItem);
 
 module.exports = router;

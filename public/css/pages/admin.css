@@ -1,84 +1,104 @@
+main.admin {
+    font-family: var(--font-inter);
+    min-height: 75vh;
+}
 
-.admin__search{
-    display: flex;
-    gap: var(--spacing-20);
+.createdit__title {
+    display: inline;
+    font-family: var(--font-raleway);
+    font-weight: 700;
+    font-size: var(--font-38-jumbo);
+}
+
+.block__data {
+    margin-bottom: var(--spacing-36);
+}
+
+.admin__main {
     margin: var(--spacing-36) auto;
 }
-.admin__search-bar{
-    border: solid 2px var(--dark-bg-solid);
-    border-radius: var(--spacing-6);
-    min-width: 50%;
-    padding: var(--spacing-10);
+
+.listado__head {
+    margiN: var(--spacing-36) 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.admin__icon iconify-icon {
-    width: 42px;
-    height: 42px;
+.listado__title {
+    font-size: var(--font-30-xlarge);
+    font-weight: bold;
 }
 
-.admin__header{
-    display: grid;
-    grid-template-columns: 4fr 1fr;
-    gap: var(--spacing-16);
+
+.listado__add {
+    display: flex;
+    align-items: center;
 }
-.admin__header h2 {
-    font-family: var(--alternative-font);
-    font-size: var(--font-jumbo);
+
+.listado__add h2 {
     font-weight: 700;
 }
 
-.admin__header span{
-    font-size: var(--font-medium);
-    align-items: center;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    gap: var(--spacing-20);
+.listado__add--icon {
+    color: var(--rojo);
+    font-size: var(--font-38-jumbo);
+    padding: 0 var(--spacing-20);
 }
 
+.listado__add--icon:hover {
+    color: var(--rojo-70);
+}
 
-.admin__header span iconify-icon {
-    color: var(--primary-900);
-    height: 45px;
-    width: 45px;
+.table {
+    font-size: var(--font-18-medium);
+}
+
+.col {
+    padding-bottom: var(--spacing-68);
+}
+
+.td__icon--edit,
+.td__icon--delete {
     cursor: pointer;
 }
 
-.admin-table{
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-16);   
+.td__icon--edit {
+    color: var(--azul);
 }
 
-.admin-table__header,
-.admin-table__row {
-    display: grid;
-    grid-template-columns: 30px 1fr 4fr 3fr 40px 40px;
-    align-items: center;
-    gap: var(--spacing-8);
-    font-size: var(--font-medium);
-    font-weight: 700;
+.td__icon--delete {
+    color: var(--rojo);
 }
 
-.admin-table__row button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 24px;
+.td__icon--edit:hover {
+    color: var(--azul-70)
 }
 
-.admin-table__row p {
+.td__icon--delete:hover {
+    color: var(--rojo-70)
+}
+
+th.id {
     font-weight: 500;
-    margin: var(--spacing-8) auto; 
+}
+
+.btn__borrar--item,
+.btn__edit--item {
+    border: none;
+    background-color: transparent;
+}
+
+/* PAGINA EDIT */
+.edit__img {
+    max-width: 150px;
+    padding-bottom: var(--spacing-8);
+}
+
+.edit__img--side {
     font-size: var(--font-small);
-    text-align: left;
-}
-
-.admin-table__row iconify-icon {
-    font-size: var(--font-large);
-}
-
-.admin-table__header {
-    margin-bottom: var(--spacing-24);
+    text-align: center;
+    padding-top: var(--spacing-8);
+    border-top: 2px solid var(--primary-solid);
+    font-weight: 600;
 }
