@@ -1,5 +1,5 @@
 const path = require('path');
-const { getAll, getOne, create } = require('../models/product.model');
+const { getAll, getOne, create, edit, deleteOne } = require('../models/product.model');
 
 module.exports = {
     admin: async (req, res) => { 
@@ -26,8 +26,8 @@ module.exports = {
             discount: Number(req.body.discount),
             sku: req.body.sku,
             dues: Number(req.body.dues),
-            image_front: '/img/products/'+ req.files[0].filename,
-            image_back: '/img/products/'+ req.files[1].filename,
+            img_front: '/img/products/'+ req.files[0].filename,
+            img_back: '/img/products/'+ req.files[1].filename,
             category_id: Number(req.body.category),
             licence_id: Number(req.body.licence)
         }
@@ -46,12 +46,48 @@ module.exports = {
             product
         })
     },
-    editItem: (req, res) => res.send(" Route for Admin Edit ID PUT View"),
+    editItem: async (req, res) => {
+        const { id } = req.params;
+    const haveImages = req.files.lenght !== 0;
+
+    const product_schema =  haveImages 
+    ?   {
+            product_name: req.body.name,
+            product_description: req.body.description,
+            price: Number(req.body.price),
+            stock: Number(req.body.stock),
+            discount: Number(req.body.discount),
+            sku: req.body.sku,
+            dues: Number(req.body.dues),
+            img_front: '/img/products/' + req.files[0].filename,
+            img_back: '/img/products/' + req.files[1].filename,
+            category_id: Number(req.body.category),
+            licence_id: Number(req.body.licence)
+        }
+        :   {
+            product_name: req.body.name,
+            product_description: req.body.description,
+            price: Number(req.body.price),
+            stock: Number(req.body.stock),
+            discount: Number(req.body.discount),
+            sku: req.body.sku,                    
+            dues: Number(req.body.dues),
+            category_id: Number(req.body.category),
+            licence_id: Number(req.body.licence)
+        };
         
-    deleteItem: (req, res) =>{
+        await edit(product_schema, { product_id: id })
+        res.redirect('/shop')
+    },    
+        
+    deleteItem: async (req, res) =>{
         const { id }= req.params;
-        res.send('Queres borrar el item ' + id)
+
+        return await deleteOne({ product_id: id});
+
+        res.redirect('/admin')
     }
+
 };
 
 

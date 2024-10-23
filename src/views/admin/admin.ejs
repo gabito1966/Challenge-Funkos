@@ -22,18 +22,22 @@
                     <h3>Nombre del Producto</h3>
                     <h3>Categoria</h3>
                 </section>
-                <% data.forEach( product => { %>
-                    <article class="admin-table__row">
-                        <p><%= product.product_id %></p>
-                        <p><%= product.sku %></p>
-                        <p><%= product.product_name %> </p>
-                        <p><%= product.category_name %></p>
-                        <a href="/admin/edit/<%= product.product_id  %>"><iconify-icon icon="mdi:pencil" style="color: #1d84b5"></iconify-icon> </a>
-                        <form action="/admin/delete/<%= product.product_id  %>? _method=DELETE" method="POST" enctype="application/x-www-form-urlencoded"> 
-                            <button type="submit"><iconify-icon icon="heroicons-solid:trash" style="color: #f33"></iconify-icon></button>
-                        </form>
-                    </article>    
-                <% }) %>
+                <% if (Array.isArray(data)) { %>
+                    <% data.forEach( product => { %>
+                        <article class="admin-table__row">
+                            <p><%= product.product_id %></p>
+                            <p><%= product.sku %></p>
+                            <p><%= product.product_name %></p>
+                            <p><%= product.category_name %></p>
+                            <a href="/admin/edit/<%= product.product_id  %>"><iconify-icon icon="mdi:pencil" style="color: #1d84b5"></iconify-icon> </a>
+                            <form action="/admin/delete/<%= product.product_id  %>?_method=DELETE" method="POST" enctype="application/x-www-form-urlencoded"> 
+                                <button type="submit"><iconify-icon icon="heroicons-solid:trash" style="color: #f33"></iconify-icon></button>
+                            </form>
+                        </article>    
+                    <% }); %>
+                <% } else { %>
+                    <p>No hay productos disponibles.</p>
+                <% } %>
             </div>
         </section>
     </main>

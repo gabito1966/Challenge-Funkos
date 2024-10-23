@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const methodOverride = require('method-override');
+const { initSession } = require('./src/middlewares/session');
 
 /* Routes imports*/
 const mainRoutes = require('./src/routes/mainRoutes');
@@ -20,6 +21,11 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));
+
+//Crear sesion de usuario
+
+app.use(initSession());
+
 
 
 // Rutas

@@ -1,18 +1,20 @@
-const userCredentials = {
+const path = require('path');
+
+const credentials = {
     email: 'gabriel@gmail.com',
-    password: 'gabito1966'
+    password: 'gabriel1234'
 }
 
 module.exports = {
-    loginView: (req, res) => res.render('../views/auth/login.ejs', {
+    login: (req, res) => res.render(path.resolve(__dirname, '../views/auth/login.ejs'), {
         title: 'Login | Funkoshop'
     }),
-    loginUser: (req, res) => {
+    doLogin: (req, res) => {
         const {email, password} = req.body;
-        const emailValidation = userCredentials.email == email;
-        const passwordValidation = userCredentials.password == password;
+        const validateEmail = credentials.email == email;
+        const validatePassword = credentials.password == password;
         
-        req.session.isLogged = emailValidation && passwordValidation ? true : false;
+        req.session.isLogged = validateEmail && validatePassword ? true : false;
 
         if (req.session.isLogged) {
             res.locals.isLogged = true;
@@ -20,12 +22,12 @@ module.exports = {
         }
         return res.status(401).send('Credenciales inválidas');
     },
-    registerView: (req, res) => res.render('../views/auth/register.ejs', {
+    register: (req, res) => res.render(path.resolve(__dirname,'../views/auth/register.ejs'), {
         title: 'Register | Funkoshop',
     }),
     
-    registerUser: (req, res) => res.send(" Register route that recieve the data when"),
-    logoutUser: (req, res) => {
+    doRegister: (req, res) => res.send(" Register route that recieve the data when"),
+    logout: (req, res) => {
         req.session.isLogged = false;
         res.send("Sesion finalizada con exito")
     },

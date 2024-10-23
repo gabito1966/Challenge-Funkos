@@ -1,5 +1,5 @@
 const path = require('path');
-const { getAll, getOne, create } = require('../models/product.model');
+const { getAll, getOne } = require('../models/product.model');
 
 
 module.exports = {
@@ -10,9 +10,10 @@ module.exports = {
             data
             });
         },
+
     item: async (req, res) => {
         const itemId = req.params.id;
-        const [item] = await getOne(itemId);
+        const [item] = await getOne({product_id: itemId});
         res.render('../views/shop/item.ejs', {
             title: 'Item | Funkoshop',
             item

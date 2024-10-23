@@ -6,11 +6,11 @@
 
     <main id="edit" class="container">
         <h2 class="edit__title">EDITAR ITEM</h2>
-        <form class="edit__form" action="/admin/edit" method="post" enctype="application/x-www-form-urlencoded">
+        <form class="edit__form" action="/admin/edit/<%= product.product_id %>?_method= PUT" method="POST" enctype="multipart/form-data">
             <div class="form__flex">
                 <div class="form__box--flex">
-                <label class="form__label" for="collection" >Categoria:</label>
-                    <select class="form__select" name="collection" id="collection" required>
+                <label class="form__label" for="category" >Categoria:</label>
+                    <select class="form__select" name="category" id="collection" required>
                         <% if(product.category_id == 1) { %>
                             <option value="1" selected>Figuras coleccionables</option>
                             <option value="2">Llaveros</option>
@@ -29,8 +29,8 @@
                     </select>
                 </div>
                 <div class="form__box--flex">
-                <label class="form__label" for="collection">Licencia:</label>
-                <select class="form__select" name="collection" id="collection" required>
+                <label class="form__label" for="licence">Licencia:</label>
+                <select class="form__select" name="licence" id="licence" required>
                     <% if(product.licence_id==1) { %>
                         <option value="1" selected>Pokemon</option>
                         <option value="2">Star Wars</option>
@@ -59,7 +59,7 @@
                 </div>
             </div>
             <div class="form__box--flex">
-                <label class="form__label" for="">Nombre del producto:</label>
+                <label class="form__label" for="name">Nombre del producto:</label>
                 <input class="form__input" type="text" name="name" id="name" value="<%= product.product_name %>" required>
             </div>
             <div>
@@ -112,22 +112,22 @@
                 </select>
             </div>
             <div class="form__container">
-                <label class="form__title" for="">Imágenes:</label>
-                <input class="form__select-img" name="Elegir archivos" type="file">
+                <label class="form__label" for="images">Imágenes:</label>
+                <input type="file" name="images" id="img" multiple>
             </div>
-            <div class="form__container-img">
-                <div>
-                    <img class="edit__img" src="<%= product.img_front %>" alt="">
-                    <p class="form__text">Frente</p>
+            <div class="form__box--flex">
+                <div class="edit__img">
+                    <img src="<%= product.img_front %>" alt="<%= product.product_description %>">
+                    <p class="edit__img-side">Frente</p>
                 </div>
-                <div>
-                    <img class="edit__img" src="<%= product.img_back %>" alt="">
-                    <p class="form__text">Dorso</p>
+                <div class="edit__img" >
+                    <img src="<%= product.img_back %>" alt="<%= product.product_description %>">
+                    <p class="edit__img-side">Dorso</p>
                 </div>
             </div>
             <div class="form__button-container">
                 <button class="form__button" type="submit"> Modificar Producto </button>
-                <button class="form__button" type="submit"> Limpiar </button>
+                <button class="form__button" type="reset"> Limpiar </button>
             </div>
         </form>
     </main>
